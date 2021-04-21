@@ -13,14 +13,16 @@ DEBUG=$VERBOSITY # Set verbosity level
 INVENTORY_FILE=$1 
 
 [[ $DEBUG -ge 1 ]] && echo El valor de WGET_BIN es $WGET_BIN
+[[ $INVENTORY_FILE -ge 1 ]] && echo El valor de INVENTORY_FILE es $INVENTORY_FILE
 
 
-#Main
+
 # Pre requisites or exit
 [[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
 [[ ! -f $INVENTORY_FILE ]] && (echo Archivo inventario no encontrado && exit 2) 
 
 
+#Main
 
 
 
