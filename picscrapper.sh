@@ -7,9 +7,9 @@
 # Definicion de variables
 WGET_BIN=$(which wget) 
 
-
-
+echo binario wget $WGET_BIN
 
 
 #Main
 # Pre requisites or exit
+[[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
