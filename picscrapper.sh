@@ -8,8 +8,9 @@
 
 # Definicion de variables
 WGET_BIN=$(which wget) # Look for wget binary path
-VERBOSITY=$1 # Get first parameter to set verbosity levelt
+VERBOSITY=$2 # Get first parameter to set verbosity levelt
 DEBUG=$VERBOSITY # Set verbosity level
+INVENTORY_FILE=$1 
 
 [[ $DEBUG -ge 1 ]] && echo El valor de WGET_BIN es $WGET_BIN
 
@@ -17,6 +18,7 @@ DEBUG=$VERBOSITY # Set verbosity level
 #Main
 # Pre requisites or exit
 [[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
+[[ ! -f $INVENTORY_FILE ]] && (echo Archivo inventario no encontrado && exit 2) 
 
 
 
