@@ -15,7 +15,7 @@ WGET_BIN=$(which wget) # Look for wget binary path
 VERBOSITY=$2 # Get second parameter to set verbosity level
 DEBUG=$VERBOSITY # Set verbosity level
 INVENTORY_FILE=$1 # Get first parameter to set inventory file
-DOWNLOAD_DIR=$INVENTORY_FILE # Name download dir as inventory file
+DOWNLOAD_DIR=$INVENTORY_FILE"_downloads" # Name download dir as inventory file
 
 [[ $DEBUG -ge 1 ]] && echo El valor de WGET_BIN es $WGET_BIN
 [[ $DEBUG -ge 1 ]] && echo El valor de INVENTORY_FILE es $INVENTORY_FILE
@@ -37,6 +37,7 @@ for LINEA in $(cat $INVENTORY_FILE); do
   URL=$(echo $LINEA | cut -f1 -d";") # Get url to download
   NAME=$(echo $LINEA | cut -f2 -d";") # Get file name to save
 
+  echo $WGET_BIN -O $DOWNLOAD_DIR/$NAME $URL 
 done
 
 
