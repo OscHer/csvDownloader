@@ -6,6 +6,7 @@
 
 
 
+
 # Definicion de variables
 WGET_BIN=$(which wget) # Look for wget binary path
 VERBOSITY=$2 # Get second parameter to set verbosity level
@@ -23,12 +24,13 @@ DOWNLOAD_DIR=$INVENTORY_FILE # Name download dir as inventory file
 # Pre requisites or exit
 [[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
 [[ ! -f $INVENTORY_FILE ]] && (echo Archivo inventario $INVENTORY_FILE no existe && exit 2) 
-[[ -w $DOWNLOAD_DIR ]] || (mkdir -p $DOWNLOAD_DIR || (echo Error: Imposible crear directorio de descarga $DOWNLOAD_DIR))
+[[ -w $DOWNLOAD_DIR ]] || (mkdir -p $DOWNLOAD_DIR || (echo Error: Imposible crear directorio de descarga $DOWNLOAD_DIR && exit 3))
 
 # Main
 # Crawl over inventory file
 for LINEA in $(cat $INVENTORY_FILE); do 
   [[ $DEBUG -ge 1 ]] && echo El valor de LINEA es $LINEA
+
   URL=$(echo $LINEA | cut -f1 -d";") # Get url to download
   NAME=$(echo $LINEA | cut -f2 -d";") # Get file name to save
 
