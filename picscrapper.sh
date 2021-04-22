@@ -8,19 +8,21 @@
 
 # Definicion de variables
 WGET_BIN=$(which wget) # Look for wget binary path
-VERBOSITY=$2 # Get first parameter to set verbosity levelt
+VERBOSITY=$2 # Get second parameter to set verbosity level
 DEBUG=$VERBOSITY # Set verbosity level
-INVENTORY_FILE=$1 
+INVENTORY_FILE=$1 # Get first parameter to set inventory file
+DOWNLOAD_DIR=$INVENTORY_FILE # Name download dir as inventory file
 
 [[ $DEBUG -ge 1 ]] && echo El valor de WGET_BIN es $WGET_BIN
 [[ $DEBUG -ge 1 ]] && echo El valor de INVENTORY_FILE es $INVENTORY_FILE
+[[ $DEBUG -ge 1 ]] && echo El valor de DOWNLOAD_DIR es $DOWNLOAD_DIR
 
 
 
 # Pre requisites or exit
 [[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
-[[ ! -f $INVENTORY_FILE ]] && (echo Archivo inventario no encontrado && exit 2) 
-
+[[ ! -f $INVENTORY_FILE ]] && (echo Archivo inventario $INVENTORY_FILE no existe && exit 2) 
+[[ -w $DOWNLOAD_DIR ]] || (mkdir -p $DOWNLOAD_DIR || (echo Error: Imposible crear directorio de descarga $DOWNLOAD_DIR))
 
 # Main
 # Crawl over inventory file
