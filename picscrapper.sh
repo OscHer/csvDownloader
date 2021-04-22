@@ -37,7 +37,7 @@ for LINEA in $(cat $INVENTORY_FILE); do
   URL=$(echo $LINEA | cut -f1 -d";") # Get url to download
   NAME=$(echo $LINEA | cut -f2 -d";") # Get file name to save
 
-  echo $WGET_BIN -O $DOWNLOAD_DIR/$NAME $URL 
+  $WGET_BIN -O $DOWNLOAD_DIR/$NAME $URL 
 done
 
 
