@@ -4,7 +4,10 @@
 # La primera columna del csv es la url a descargar
 # La segunda columna del csv es el nombre con el que guardaremos la imagen
 
-
+# TO DO
+# 1 Unable to find wget binary
+# 2 Unable to read inventory file
+# 3 Download dir does not exist
 
 
 # Definicion de variables
