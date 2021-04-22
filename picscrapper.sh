@@ -17,7 +17,8 @@ DOWNLOAD_DIR=$INVENTORY_FILE # Name download dir as inventory file
 [[ $DEBUG -ge 1 ]] && echo El valor de INVENTORY_FILE es $INVENTORY_FILE
 [[ $DEBUG -ge 1 ]] && echo El valor de DOWNLOAD_DIR es $DOWNLOAD_DIR
 
-
+# TO DO
+# function show_help
 
 # Pre requisites or exit
 [[ -z $WGET_BIN ]] && (echo Binario de wget no encontrado && exit 1) 
